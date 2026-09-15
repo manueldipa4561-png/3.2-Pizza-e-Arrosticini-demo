@@ -21,8 +21,8 @@ Verifica effettuata il **15/09/2026**.
 - Nome corrente: **3.2 Pizza & Arrosticini**
 - Indirizzo: **Via Arniense 13, 66100 Chieti CH**
 - Telefono principale usato: **+39 0871 345206**
-- Instagram verificato tramite fonti pubbliche: **@ristorante_3.2**
-- URL Instagram: `https://www.instagram.com/ristorante_3.2`
+- Instagram ufficiale fornito direttamente per la demo: **@3.2_pizza_arrosticini**
+- URL Instagram: `https://www.instagram.com/3.2_pizza_arrosticini/`
 - Categorie ricorrenti: ristorante, pizzeria, italiana, barbecue
 - Restaurant Guru (agg. 24/08/2026): Google **4,5/5 su 224 recensioni**, fascia indicativa **€10–20**
 - Tripadvisor: **4,4/5 su 48 recensioni**, profilo ancora indicizzato con il vecchio nome “3.2 Eat Gustando”
@@ -124,7 +124,7 @@ La direzione è progettata per non replicare:
 - responsive navigation
 - click-to-call
 - Google Maps
-- Instagram
+- Instagram ufficiale
 - mobile action dock
 - scroll progress
 - hero CSS artwork con micro-interazione pointer desktop
@@ -137,9 +137,30 @@ La direzione è progettata per non replicare:
 - Netlify config
 - security headers
 
+## Mobile refinement
+
+Il **15/09/2026** è stato aggiunto un layer mobile dedicato in `mobile.css`, caricato dopo `styles.css`, per migliorare la demo senza alterare il layout desktop.
+
+Miglioramenti principali:
+
+- header più compatto e resistente a viewport stretti
+- menu mobile con altezza massima e scroll interno sicuro
+- hero mobile più corta e leggibile
+- CTA hero a larghezza piena e touch target più ampi
+- artwork pizza/arrosticini ridimensionato in modo specifico per 320–430 px
+- metadati hero impilati su una singola colonna
+- card Pizza / Arrosticini più compatte e meno alte
+- sezione “Fatto bene” riordinata per dare priorità al testo su mobile
+- archivio recensioni più leggibile su schermi stretti
+- pulsanti Contatti / Maps full-width
+- Instagram trasformato in CTA evidente su mobile
+- footer organizzato come griglia di azioni touch-friendly
+- mobile dock con safe-area support per iPhone e dispositivi con gesture bar
+- disattivazione degli effetti hover su dispositivi touch
+
 ## QA responsive
 
-QA browser-rendered eseguito il 15/09/2026 con Chromium sulla build finale, caricando gli stessi HTML/CSS/JS tramite DevTools `Page.setDocumentContent` perché l'ambiente blocca le URL `file://`.
+QA browser-rendered originario eseguito il 15/09/2026 con Chromium sulla build finale precedente al refinement mobile, caricando gli stessi HTML/CSS/JS tramite DevTools `Page.setDocumentContent` perché l'ambiente blocca le URL `file://`.
 
 Viewport verificati:
 
@@ -152,7 +173,7 @@ Viewport verificati:
 - 1024 px
 - 1440 px
 
-Controlli eseguiti:
+Controlli eseguiti nella build originaria:
 
 - nessun overflow orizzontale reale del documento
 - nessun reveal rimasto nascosto dopo scroll completo
@@ -166,13 +187,13 @@ Controlli eseguiti:
 - rendering visuale controllato a 320, 768 e 1440 px
 - hero, artwork, sezioni duali, archivio, reputazione, contatti e footer verificati
 
-### Fix applicato durante il QA
+### Fix originario applicato durante il QA
 
-Il link “Maps” nel footer mobile aveva una larghezza inferiore a 44 px pur avendo altezza corretta. I link footer ora hanno `min-width: 44px` e `min-height: 44px`.
+Il link “Maps” nel footer mobile aveva una larghezza inferiore a 44 px pur avendo altezza corretta. I link footer sono stati portati a `min-width: 44px` e `min-height: 44px`.
 
-Esito finale: **PASS** sugli 8 viewport indicati.
+### Nota sul refinement mobile corrente
 
-Nota: questo QA riguarda la build locale finale. Dopo la pubblicazione Netlify è consigliato un ultimo controllo live sull'URL pubblico per verificare comportamento della CDN, header e 404 nel deployment reale.
+Il nuovo `mobile.css` è stato implementato come override isolato e non modifica il CSS desktop esistente. Prima della presentazione definitiva al cliente resta consigliato un ultimo browser pass sulla build pubblicata Netlify, soprattutto a 320, 375, 430 e 768 px, per verificare il comportamento finale della CDN e delle safe-area reali.
 
 ## Deploy Netlify
 
